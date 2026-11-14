@@ -18,7 +18,7 @@ namespace MyWinTweaker
             {
                 if(key == null)
                 {
-                    Console.WriteLine("Registry branch not found");
+                    Console.WriteLine("[ERROR]Registry branch not found (read , GetTweakState)");
                     return 1;
                 }
 
@@ -29,7 +29,15 @@ namespace MyWinTweaker
 
         static void ApplyTweak(RegTweak tweak , int newValue)
         {
+            using (RegistryKey key = Registry.CurrentUser.OpenSubKey(tweak.Sub_Key_Path, true))
+            {
+                if(key == null)
+                {
+                    Console.WriteLine("[ERROR]Registry branch not found (write , ApplyTweak)");
+                    return;
+                }
 
+            }
         }
 
         static void Main(string[] args)
