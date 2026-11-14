@@ -36,7 +36,8 @@ namespace MyWinTweaker
                     Console.WriteLine("[ERROR]Registry branch not found (write , ApplyTweak)");
                     return;
                 }
-
+                key.SetValue(tweak.Value_Name, newValue, RegistryValueKind.DWord);
+                Console.WriteLine($"[SUCCESS] Tweak-{tweak.Name} set to {newValue}");
             }
         }
 
